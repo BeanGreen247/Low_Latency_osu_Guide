@@ -11,7 +11,7 @@ sudo nano /etc/pacman.conf
 ```
 Scroll down and find where it starts saying [testing], [core], [extra], [community] and so on. Make sure to remove "#" at he beginning of the line so it looks like this.
 ```
- # The testing repositories are disabled by default. To enable, uncomment the
+# The testing repositories are disabled by default. To enable, uncomment the
 # repo name header and Include lines. You can add preferred servers immediately
 # after the header, and they will be used before the default mirrors.
 

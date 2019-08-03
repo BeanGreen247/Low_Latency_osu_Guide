@@ -1,5 +1,5 @@
-## Low latency osu! guide
-# The requirements
+# Low latency osu! guide
+## The requirements
 
 Install wine staging. To do so follow the guide
 ```
@@ -59,7 +59,7 @@ sudo pacman -Sy wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib
 ```
 With that please reboot and proceed with the guide
 
-# The guide
+## The guide
 
 Create the main directory (we will be using this directory for all the configurations and tweaks....may be different in your case)
 ```

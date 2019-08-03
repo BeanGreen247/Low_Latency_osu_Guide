@@ -112,7 +112,9 @@ Install japanese fonts and icons
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q cjkfonts gdiplus
 ```
 Install dxvk 1.3.1
+
 Download https://github.com/doitsujin/dxvk/releases/download/v1.3.1/dxvk-1.3.1.tar.gz
+
 Extract dxvk-1.3.1.tar.gz to your home folder and copy using the following command
 ```
 sudo cp -r dxvk-1.3.1/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
@@ -133,8 +135,10 @@ sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
 - Next go to Staging and tick the first four
 ```
 Next install DirectX
+
 To do so download the DirectX web installer
 https://www.microsoft.com/en-us/Download/confirmation.aspx?id=35
+
 Then launch it using the following command
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine ~/Downloads/dxwebsetup.exe
@@ -185,9 +189,13 @@ After that make sure to run osu with
 sudo osu
 ```
 Once open make sure to let it cache for really low latency (latency decreases as you play)
+
 To speed it up pick any really long map and enable HR,NC and AT
+
 Let osu play the map till the end and let the leaderboards and all of the ui element enabled
+
 Once done you can play with low latency enjoy 
+
 I would recommend closing osu normally and then kill wine by 
 ```
 sudo osukill

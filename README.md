@@ -122,7 +122,7 @@ sudo cp -r dxvk-1.3.1/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/window
 Open winecfg
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
-- Set Windows version to Windows 7
+- Set Windows version to Windows 2000
 - Go to libraries and add
 >>d3d10
 >>d3d10_1

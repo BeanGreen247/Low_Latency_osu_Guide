@@ -120,7 +120,7 @@ sudo cp -r dxvk-1.3.1/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/window
 Open winecfg
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
-- Set Windows version to Windows 2000
+- Set Windows version to Windows 7 if not done already
 - Go to libraries and add
 >>d3d10
 >>d3d10_1
@@ -134,12 +134,19 @@ sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
 Next install DirectX
 
 To do so download the DirectX web installer
-https://www.microsoft.com/en-us/Download/confirmation.aspx?id=35
+https://www.microsoft.com/en-us/download/details.aspx?id=8109
 
 Then launch it using the following command
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine ~/Downloads/dxwebsetup.exe
 ```
+It will aske where to install. Pick C:\
+
+Once done launch the installer
+```
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/DXSETUP.exe
+```
+
 Once finished with the install continue.
 
 Create a custom terminal command for launching osu!

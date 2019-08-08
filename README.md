@@ -75,7 +75,7 @@ wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetric
 chmod +x winetricks
 sudo mv -v winetricks /usr/local/bin
 ```
-Install .NET 4.7.1
+Install .NET Framework
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet471 dotnet452 dotnet35
 ```

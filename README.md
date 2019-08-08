@@ -138,7 +138,7 @@ https://www.microsoft.com/en-us/download/details.aspx?id=8109
 
 Then launch it using the following command
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine ~/Downloads/dxwebsetup.exe
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine ~/Downloads/directx_Jun2010_redist.exe
 ```
 It will aske where to install. Pick C:\
 

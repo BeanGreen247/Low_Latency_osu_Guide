@@ -77,7 +77,7 @@ sudo mv -v winetricks /usr/local/bin
 ```
 Install .NET 4.7.1
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q dotnet471
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet471 dotnet452 dotnet35
 ```
 Lower audio latency
 ```
@@ -105,6 +105,7 @@ Launch the Installer
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!install.exe
 ```
+**NOTE:**
 Once you get to the instalation directory make sure to type in 
 ```
 C:\users\root\Application Data\osu!\

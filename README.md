@@ -97,7 +97,7 @@ sudo mkdir /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\
 ```
 Download the Installer
 ```
-https://m1.ppy.sh/r/osu!install.exe
+https://m1.ppy.sh/release/osu!install.exe
 ```
 Copy it to your newly created folder
 ```

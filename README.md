@@ -75,9 +75,9 @@ wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetric
 chmod +x winetricks
 sudo mv -v winetricks /usr/local/bin
 ```
-Install .NET 4.6.2
+Install .NET 4.7.1
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q dotnet462
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q dotnet471
 ```
 Lower audio latency
 ```

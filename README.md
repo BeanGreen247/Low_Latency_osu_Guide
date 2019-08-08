@@ -95,10 +95,8 @@ Create osu directory where osu! is going to be installed
 ```
 sudo mkdir /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
-Download the Installer
-```
-https://m1.ppy.sh/release/osu!install.exe
-```
+Download the Installer https://m1.ppy.sh/release/osu!install.exe
+
 Copy it to your newly created folder
 ```
 sudo cp -r ~/Downloads/osu\!install.exe /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!

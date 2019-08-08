@@ -105,13 +105,6 @@ Launch the Installer
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!install.exe
 ```
-**NOTE:**
-Once you get to the instalation directory make sure to type in 
-```
-C:\users\root\Application Data\osu!\
-```
-Then continue with the install
-
 Install japanese fonts and icons
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q cjkfonts gdiplus

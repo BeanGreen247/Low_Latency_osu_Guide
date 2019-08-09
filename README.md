@@ -77,7 +77,7 @@ sudo mv -v winetricks /usr/local/bin
 ```
 Install .NET Framework
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet462
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet462 cjkfonts gdiplus
 ```
 Lower audio latency
 ```
@@ -100,10 +100,6 @@ Download the Installer https://m1.ppy.sh/r/osu!install.exe
 Copy it to your newly created folder
 ```
 sudo cp -r ~/Downloads/osu\!install.exe /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
-```
-Install japanese fonts and icons
-```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q cjkfonts gdiplus
 ```
 Install dxvk 1.3.1
 

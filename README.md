@@ -51,7 +51,7 @@ sudo pacman -Suy
 ```
 And install wine-staging
 ```
-sudo pacman -S wine-staging
+sudo pacman -Sy wine-staging
 ```
 And lastly install all of these packages
 ```

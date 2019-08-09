@@ -49,6 +49,13 @@ Next update the packages
 ```
 sudo pacman -Suy
 ```
+Make sure to get yay installed
+```
+git clone https://aur.archlinux.org/trizen.git
+cd trizen
+makepkg -si
+trizen -S yay
+```
 And install wine-staging
 ```
 yay -S wine-staging-git

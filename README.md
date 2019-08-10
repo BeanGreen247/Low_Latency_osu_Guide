@@ -1,7 +1,7 @@
 # Low latency osu! guide
 ## The requirements
 
-Install wine or wine-staging. To do so follow the guide
+Install wine-stable or wine-staging. To do so follow the guide
 ```
 https://wiki.winehq.org/Download
 ```

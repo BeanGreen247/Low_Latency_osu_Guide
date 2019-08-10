@@ -32,6 +32,7 @@ sudo apt install -y \
       libwine \
       libwine:i386 \
       fonts-wine
+sudo apt install --install-recommends winehq-stable
 ```
 ### Arch Linux
 For **Arch Linux** go and open your terminal. We will need to edit the pacman.conf file

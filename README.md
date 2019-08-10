@@ -107,7 +107,7 @@ sudo mv -v winetricks /usr/local/bin
 ```
 Install .NET Framework
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet462 cjkfonts gdiplus firefox winhttp wininet wininet_win2k
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet462 cjkfonts gdiplus ie7 ie8 ie9 firefox winhttp wininet wininet_win2k
 ```
 Lower audio latency
 ```

@@ -15,6 +15,7 @@ sudo apt-key add winehq.key
 Next open your /etc/apt/sources.list file and add to the end of the file
 ```
 deb https://dl.winehq.org/wine-builds/debian/ buster main
+deb-src https://dl.winehq.org/wine-builds/debian/ buster main
 ```
 Next update your packages
 ```

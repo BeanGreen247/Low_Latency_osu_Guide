@@ -1,11 +1,41 @@
 # Low latency osu! guide
 ## The requirements
 
-Install wine staging. To do so follow the guide
+Install wine-stable or wine-staging. To do so follow the guide
 ```
 https://wiki.winehq.org/Download
 ```
-For **Arch Linux** (my case) go and open your terminal. We will need to edit the pacman.conf file
+### Debian 10
+For **Debian 10** run these commands first
+```
+sudo dpkg --add-architecture i386 
+wget -nc https://dl.winehq.org/wine-builds/winehq.key
+sudo apt-key add winehq.key
+```
+Next open your /etc/apt/sources.list file and add to the end of the file
+```
+deb https://dl.winehq.org/wine-builds/debian/ buster main
+deb-src https://dl.winehq.org/wine-builds/debian/ buster main
+```
+Next update your packages
+```
+sudo apt update
+```
+Install wine
+```
+sudo apt install -y libc6 libgcc1 libglib2.0-0 libgphoto2-6 libgphoto2-port12 libgstreamer-plugins-base1.0-0 libgstreamer1.0-0 liblcms2-2 libldap-2.4-2 libmpg123-0 libopenal1 libpulse0 libudev1 libx11-6 libxext6 libxml2 zlib1g libasound2-plugins libncurses5 libcapi20-3 libcups2 libdbus-1-3 libfontconfig1 libfreetype6 libglu1-mesa libgnutls30 libgsm1 libgssapi-krb5-2 libgtk-3-0 libkrb5-3 libncurses5 libodbc1 libosmesa6 libpcap0.8 libpng16-16 libsane1 libsdl2-2.0-0 libtiff5 libv4l-0 libva-drm2 libva-x11-2 libva2 libvulkan1 libxcomposite1 libxcursor1 libxfixes3 libxi6 libxinerama1 libxrandr2 libxrender1 libxslt1.1 libxxf86vm1 gnutls-bin cabextract
+sudo apt install -y libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libxml2:i386 libasound2-plugins:i386 libsdl2-2.0-0:i386 libfreetype6:i386 libdbus-1-3:i386 libsqlite3-0:i386
+sudo apt install -y \
+      wine \
+      wine32 \
+      wine64 \
+      libwine \
+      libwine:i386 \
+      fonts-wine
+sudo apt install --install-recommends winehq-stable
+```
+### Arch Linux
+For **Arch Linux** go and open your terminal. We will need to edit the pacman.conf file
 ```
 sudo nano /etc/pacman.conf
 ```
@@ -51,11 +81,11 @@ sudo pacman -Suy
 ```
 And install wine-staging
 ```
-sudo pacman -S wine-staging
+sudo pacman -Sy wine-staging
 ```
 And lastly install all of these packages
 ```
-sudo pacman -Sy wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba alsa alsa-utils alsa-tools
+sudo pacman -Sy giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba alsa alsa-utils alsa-tools gnutls libpng wine-mono lib32-libxml2 lib32-mpg123 lib32-lcms2 lib32-giflib lib32-libpng lib32-gnutls pygtk python2-dbus lib32-libpulse lib32-fontconfig lib32-libxcomposite lib32-libxrender  lib32-libxslt lib32-gnutls lib32-libxi lib32-libxrandr lib32-libxinerama lib32-libcups lib32-freetype2 lib32-libpng lib32-openal python-pyopencl lib32-v4l-utils lib32-libxcursor lib32-mpg123 lib32-sdl xf86-video-intel lib32-mesa-libgl          nss-mdns --needed --noconfirm
 ```
 With that please reboot and proceed with the guide
 
@@ -75,9 +105,9 @@ wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetric
 chmod +x winetricks
 sudo mv -v winetricks /usr/local/bin
 ```
-Install .NET 4.6.2
+Install .NET Framework
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q dotnet462
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet462 cjkfonts gdiplus ie7 ie8 firefox winhttp
 ```
 Lower audio latency
 ```
@@ -95,22 +125,17 @@ Create osu directory where osu! is going to be installed
 ```
 sudo mkdir /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
-Download the Installer
-```
-https://m1.ppy.sh/r/osu!install.exe
-```
+If you don't want to use the installer download the preinstalled osu! folder (https://www.mediafire.com/file/rlz595jxqfo1dv8/osu%21.zip/file) and extract it into /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
+
+If you want to use the installer follow these steps
+
+Download the Installer https://m1.ppy.sh/r/osu!install.exe
+
 Copy it to your newly created folder
 ```
 sudo cp -r ~/Downloads/osu\!install.exe /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
-Launch the Installer
-```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!install.exe
-```
-Install japanese fonts and icons
-```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q cjkfonts gdiplus
-```
+
 Install dxvk 1.3.1
 
 Download https://github.com/doitsujin/dxvk/releases/download/v1.3.1/dxvk-1.3.1.tar.gz
@@ -122,7 +147,7 @@ sudo cp -r dxvk-1.3.1/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/window
 Open winecfg
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
-- Set Windows version to Windows 2000
+- Set Windows version to Windows 7 if not done already
 - Go to libraries and add
 >>d3d10
 >>d3d10_1
@@ -131,18 +156,24 @@ sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
 >>dxgi
 - Set them to native and click apply
 - Next go to graphics and tick and "Allow the window manager to control the windows"
-- Next tick emulate virtual desktop and se a custom resolution
 - Next go to Staging and tick the first four
 ```
 Next install DirectX
 
 To do so download the DirectX web installer
-https://www.microsoft.com/en-us/Download/confirmation.aspx?id=35
+https://www.microsoft.com/en-us/download/details.aspx?id=8109
 
 Then launch it using the following command
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine ~/Downloads/dxwebsetup.exe
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine ~/Downloads/directx_Jun2010_redist.exe
 ```
+It will aske where to install. Pick C:\
+
+Once done launch the installer
+```
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/DXSETUP.exe
+```
+
 Once finished with the install continue.
 
 Create a custom terminal command for launching osu!
@@ -183,6 +214,11 @@ Mouse tweak
 xset m 0 0
 ```
 Next reboot
+
+Launch the Installer
+```
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!install.exe
+```
 
 After that make sure to run osu with
 ```

@@ -128,11 +128,11 @@ If you don't want to use the installer download the preinstalled osu! folder (ht
 
 If you want to use the installer follow these steps
 
-Download the Installer https://m1.ppy.sh/r/osu!install.exe
+Download the Installer http://download2260.mediafire.com/x876wyx61leg/b1kwohoegs73qrl/osume.exe
 
 Copy it to your newly created folder
 ```
-sudo cp -r ~/Downloads/osu\!install.exe /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
+sudo cp -r ~/Downloads/osume.exe /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
 
 Install dxvk 1.3.1
@@ -216,7 +216,7 @@ Next reboot
 
 Launch the Installer
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!install.exe
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osume.exe
 ```
 
 After that make sure to run osu with

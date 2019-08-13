@@ -135,13 +135,13 @@ Copy it to your newly created folder
 sudo cp -r ~/Downloads/osu\!install.exe /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
 
-Install dxvk 1.3.1
+Install dxvk 1.3.2
 
-Download https://github.com/doitsujin/dxvk/releases/download/v1.3.1/dxvk-1.3.1.tar.gz
+Download https://github.com/doitsujin/dxvk/releases/download/v1.3.2/dxvk-1.3.2.tar.gz
 
-Extract dxvk-1.3.1.tar.gz to your home folder and copy using the following command
+Extract dxvk-1.3.2.tar.gz to your home folder and copy using the following command
 ```
-sudo cp -r dxvk-1.3.1/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
+sudo cp -r dxvk-1.3.2/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
 ```
 Open winecfg
 ```

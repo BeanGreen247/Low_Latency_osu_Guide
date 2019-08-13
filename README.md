@@ -238,12 +238,11 @@ Let osu play the map till the end and let the leaderboards and all of the ui ele
 
 Once done you can play with low latency.
 
-But it can go lower.
-
 I would recommend closing osu normally and then kill wine by 
 ```
 sudo osukill
 ```
+### THE FINAL STEP
 And the last step is changing the CustomFrameLimit variable. 
 
 To change it open osu!.root.cfg wich can be found in your osu folder. Then find "CustomFrameLimit=240" and change it to 10000.

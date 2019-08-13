@@ -229,6 +229,7 @@ After that make sure to run osu with
 sudo osu
 ```
 **YOU HAVE TO DO THIS STEP ONLY ONCE**
+
 Once open make sure to let it cache for really low latency (latency decreases as you play)
 
 To speed it up pick any really long map and enable HR,NC and AT

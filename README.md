@@ -228,13 +228,16 @@ After that make sure to run osu with
 ```
 sudo osu
 ```
+**YOU HAVE TO DO THIS STEP ONLY ONCE**
 Once open make sure to let it cache for really low latency (latency decreases as you play)
 
 To speed it up pick any really long map and enable HR,NC and AT
 
 Let osu play the map till the end and let the leaderboards and all of the ui element enabled
 
-Once done you can play with low latency enjoy 
+Once done you can play with low latency.
+
+But it can go lower.
 
 I would recommend closing osu normally and then kill wine by 
 ```

@@ -115,8 +115,8 @@ cat > dsound.reg << "EOF"
 Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Wine\DirectSound]
-"HelBuflen"="8096"
-"SndQueueMax"="4"
+"HelBuflen"="128"
+"SndQueueMax"="1"
 EOF
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine regedit dsound.reg
 ```
@@ -179,7 +179,7 @@ Create a custom terminal command for launching osu!
 ```
 cat > osu << "EOF"
 #!/bin/sh
-export STAGING_AUDIO_DURATION=2000
+export STAGING_AUDIO_DURATION=2000 #recommend starting at 5000 and work your way down till osu starts crashing
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe

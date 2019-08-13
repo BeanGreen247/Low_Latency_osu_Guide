@@ -261,3 +261,7 @@ Height = 768
 Width = 1024
 ```
 For the last step open osu to ensure that the changes applied succesfully.
+
+## EXTRA
+If you want to push latency lower I would recommend overclocking yourn NVIDIA GPU by using the guide below.
+https://github.com/BeanGreen247/Linux_NVIDIA_GPU_Overclocking_Guide

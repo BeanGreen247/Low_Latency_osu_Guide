@@ -182,7 +182,7 @@ cat > osu << "EOF"
 export STAGING_AUDIO_DURATION=2000
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
-sudo wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
+wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
 EOF
 ```
 Create a custom terminal command for killing osu!
@@ -191,7 +191,7 @@ cat > osukill << "EOF"
 #!/bin/sh
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
-sudo wineserver -k
+wineserver -k
 EOF
 ```
 Make the commands executable and make them accesable from the terminal

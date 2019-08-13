@@ -155,7 +155,7 @@ sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
 >>dxgi
 - Set them to native and click apply
 - Next go to graphics and tick and "Allow the window manager to control the windows"
-- Next go to Staging and tick the first four
+- Next go to Staging and tick Hide Wine version from applications
 ```
 Next install DirectX
 

@@ -179,7 +179,7 @@ Create a custom terminal command for launching osu!
 ```
 cat > osu << "EOF"
 #!/bin/sh
-export STAGING_AUDIO_DURATION=2000 #recommend starting at 5000 and work your way down till osu starts crashing
+export STAGING_AUDIO_DURATION=1000 #recommend starting at 5000 and work your way down till osu starts crashing
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
@@ -240,4 +240,21 @@ I would recommend closing osu normally and then kill wine by
 ```
 sudo osukill
 ```
-And reopen it to ensure that the changes applied succesfully
+And the last step is changing the CustomFrameLimit variable. 
+
+To change it open osu!.root.cfg wich can be found in your osu folder. Then find "CustomFrameLimit=240" and change it to 10000.
+```
+CustomFrameLimit=10000 
+```
+I would also recommend to change "HeightFullscreen" and "WidthFullscreen" to a resolution you like playing at.
+These work for me:
+```
+HeightFullscreen = 768
+WidthFullscreen = 1024
+```
+And change the same for "Height" and "Width"
+```
+Height = 768
+Width = 1024
+```
+For the last step open osu to ensure that the changes applied succesfully.

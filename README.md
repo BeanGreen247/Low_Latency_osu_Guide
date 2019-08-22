@@ -124,7 +124,7 @@ Create osu directory where osu! is going to be installed
 ```
 sudo mkdir /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
-If you don't want to use the installer download the preinstalled osu! folder (https://www.mediafire.com/file/rlz595jxqfo1dv8/osu%21.zip/file) and extract it into /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
+If you don't want to use the installer download the preinstalled osu! folder (http://www.mediafire.com/file/omcxq8r13uyqa2q/osu.zip/file) and extract it into /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 
 If you want to use the installer follow these steps
 

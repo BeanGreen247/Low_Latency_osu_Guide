@@ -179,7 +179,7 @@ Create a custom terminal command for launching osu!
 ```
 cat > osu << "EOF"
 #!/bin/sh
-export STAGING_AUDIO_DURATION=1000 #recommend starting at 5000 and work your way down till osu starts crashing
+export STAGING_AUDIO_DURATION=2000 #recommend starting at 5000 and work your way down till osu starts crashing
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
@@ -265,3 +265,9 @@ For the last step open osu to ensure that the changes applied succesfully.
 ## EXTRA
 If you want to push latency lower I would recommend overclocking yourn NVIDIA GPU by using the guide below.
 https://github.com/BeanGreen247/Linux_NVIDIA_GPU_Overclocking_Guide
+
+## Troubleshooting
+If you get rundll32 error run
+```
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet472
+```

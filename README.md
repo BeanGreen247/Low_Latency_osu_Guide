@@ -88,7 +88,7 @@ sudo pacman -Sy giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gn
 ```
 With that please reboot and proceed with the guide
 
-## The guide
+## The guide part 1/2
 
 Create the main directory (we will be using this directory for all the configurations and tweaks....may be different in your case)
 ```
@@ -139,6 +139,7 @@ I’m using the default Microsoft drivers for my motherboard’s built-in sound 
 This is about 74ms of latency! This is high. Unfortunately, the Windows audio subsystem is hardly configurable so the only way to optimize latency is probably either in osu! or the audio drivers.
 
 We can surely do better…
+
 Let’s see what osu! on Wine Staging 4.14 (without my patch) gives.
 
 Unfortunately, despite tweaks to my PulseAudio install, we’re getting 104ms of latency. This is way higher than what we experience on Windows, and unplayable to my standards.
@@ -146,8 +147,6 @@ The most common and recent workaround for this was to use the Wine ALSA drivers 
 
 Time for my patch to get in the way.
 
-Waveform of the latency test on Linux with patched winepulse.drv
-Waveform of the latency test on Linux with patched winepulse.drv
 Now we’re talking: 15ms! This is the result I get with my patch and STAGING_AUDIO_DURATION set to 5000 and the PulseAudio settings given below. I’m sure I could actually lower it down to 10ms (with more extreme PulseAudio settings; I can also set STAGING_AUDIO_DURATION as low as 2000). But this is stable and I don’t really need to push it down further; I’m very happy with this right now!
 
 In order to get the lowest latency possible, we will need to lower wine's audio latency.
@@ -157,6 +156,7 @@ To do so we will be required to replace the 32-bit and 64-bit version of the win
 sudo wget -O /opt/wine-staging/lib/wine/winepulse.drv.so https://github.com/BeanGreen247/Low_Latency_osu_Guide/blob/master/winepulse.drv.so?raw=true
 sudo wget -O /opt/wine-staging/lib64/wine/winepulse.drv.so https://github.com/BeanGreen247/Low_Latency_osu_Guide/blob/master/winepulse-64.drv.so?raw=true
 ```
+## The guide part 2/2
 Create osu directory where osu! is going to be installed
 ```
 sudo mkdir /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!

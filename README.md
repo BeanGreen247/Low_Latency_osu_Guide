@@ -121,6 +121,35 @@ EOF
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine regedit dsound.reg
 ```
 ## Audio Latency
+### Results of my Progress
+It is now time for the results. Testing was done with the patch I described along with a few common PulseAudio configuration adjustments (that I’ll give later in the article).
+
+My testing method to measure audio latency is the following:
+
+* edit the osu!.<user>.cfg file and set CustomFrameLimit to an unrealistically high number (such as 10000) to achieve the highest possible refresh rate on main menu
+* start a microphone recording on Audacity
+* set the system, osu! global and music volume to 100% (or whatever is high enough to hear music decently in your mic)
+* set osu! effects volume to 0%
+* put the microphone in between the speakers and the mouse
+* pause/unpause the music and measure the audio latency by calculating the difference between when you hear the click and the music pausing/unpausing.
+
+Let’s begin with Windows 10.
+I’m using the default Microsoft drivers for my motherboard’s built-in sound card with all enhancements disabled.
+
+This is about 74ms of latency! This is high. Unfortunately, the Windows audio subsystem is hardly configurable so the only way to optimize latency is probably either in osu! or the audio drivers.
+
+We can surely do better…
+Let’s see what osu! on Wine Staging 4.14 (without my patch) gives.
+
+Unfortunately, despite tweaks to my PulseAudio install, we’re getting 104ms of latency. This is way higher than what we experience on Windows, and unplayable to my standards.
+The most common and recent workaround for this was to use the Wine ALSA drivers instead (which works on PulseAudio using default configuration), which somehow provide lower latency despite being theoretically less optimal.
+
+Time for my patch to get in the way.
+
+Waveform of the latency test on Linux with patched winepulse.drv
+Waveform of the latency test on Linux with patched winepulse.drv
+Now we’re talking: 15ms! This is the result I get with my patch and STAGING_AUDIO_DURATION set to 5000 and the PulseAudio settings given below. I’m sure I could actually lower it down to 10ms (with more extreme PulseAudio settings; I can also set STAGING_AUDIO_DURATION as low as 2000). But this is stable and I don’t really need to push it down further; I’m very happy with this right now!
+
 In order to get the lowest latency possible, we will need to lower wine's audio latency.
 
 To do so we will be required to replace the 32-bit and 64-bit version of the winepulse.drv.so file.
@@ -251,13 +280,7 @@ I would recommend closing osu normally and then kill wine by
 sudo osukill
 ```
 ### THE FINAL STEP
-And the last step is changing the CustomFrameLimit variable. 
-
-To change it open osu!.root.cfg wich can be found in your osu folder. Then find "CustomFrameLimit=240" and change it to 10000.
-```
-CustomFrameLimit=10000 
-```
-I would also recommend to change "HeightFullscreen" and "WidthFullscreen" to a resolution you like playing at.
+I would recommend to change "HeightFullscreen" and "WidthFullscreen" to a resolution you like playing at.
 These work for me:
 ```
 HeightFullscreen = 768

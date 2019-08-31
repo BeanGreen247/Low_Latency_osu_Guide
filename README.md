@@ -13,6 +13,7 @@ wget -nc https://dl.winehq.org/wine-builds/winehq.key
 wget -nc https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10/Release.key
 sudo apt-key add winehq.key
 sudo apt-key add Release.key
+sudo apt-add-repository contrib
 ```
 Next open your /etc/apt/sources.list file and add to the end of the file
 ```
@@ -88,7 +89,7 @@ sudo pacman -Sy giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gn
 ```
 With that please reboot and proceed with the guide
 
-## The guide
+## The guide part 1/2
 
 Create the main directory (we will be using this directory for all the configurations and tweaks....may be different in your case)
 ```
@@ -98,15 +99,17 @@ Create wine prefix
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
 ```
+**NOTE: It's going to ask you to install wine-mono and wine-gecko, make sure to select no.**
+
 Install winetricks
 ```
 wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
 chmod +x winetricks
 sudo mv -v winetricks /usr/local/bin
 ```
-Install .NET Framework
+Install .NET Framework + japenese fonts and special characters
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet462 cjkfonts gdiplus ie8 winhttp
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet472 cjkfonts gdiplus ie8 winhttp
 ```
 Lower audio latency
 ```
@@ -120,6 +123,43 @@ Windows Registry Editor Version 5.00
 EOF
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine regedit dsound.reg
 ```
+## Audio Latency
+### Results of my Progress
+It is now time for the results. Testing was done with the patch I described along with a few common PulseAudio configuration adjustments (that I’ll give later in the article).
+
+My testing method to measure audio latency is the following:
+
+* edit the osu!.root.cfg file and set CustomFrameLimit to an unrealistically high number (such as 10000) to achieve the highest possible refresh rate on main menu
+* start a microphone recording on Audacity
+* set the system, osu! global and music volume to 100% (or whatever is high enough to hear music decently in your mic)
+* set osu! effects volume to 0%
+* put the microphone in between the speakers and the mouse
+* pause/unpause the music and measure the audio latency by calculating the difference between when you hear the click and the music pausing/unpausing.
+
+Let’s begin with Windows 10.
+I’m using the default Microsoft drivers for my motherboard’s built-in sound card with all enhancements disabled.
+
+This is about **74ms** of latency! This is high. Unfortunately, the Windows audio subsystem is hardly configurable so the only way to optimize latency is probably either in osu! or the audio drivers.
+
+We can surely do better…
+
+Let’s see what osu! on Wine Staging 4.15 (without my patch) gives.
+
+Unfortunately, despite tweaks to my PulseAudio install, we’re getting **104ms** of latency. This is way higher than what we experience on Windows, and unplayable to my standards.
+The most common and recent workaround for this was to use the Wine ALSA drivers instead (which works on PulseAudio using default configuration), which somehow provide lower latency despite being theoretically less optimal.
+
+Time for my patch to get in the way.
+
+Now we’re talking: **15ms**! This is the result I get with my patch and STAGING_AUDIO_DURATION set to 5000 and the PulseAudio settings given below. I’m sure I could actually lower it down to 10ms (with more extreme PulseAudio settings; I can also set STAGING_AUDIO_DURATION as low as 2000). But this is stable and I don’t really need to push it down further; I’m very happy with this right now!
+
+In order to get the lowest latency possible, we will need to lower wine's audio latency.
+
+To do so we will be required to replace the 32-bit and 64-bit version of the winepulse.drv.so file.
+```
+sudo wget -O /opt/wine-staging/lib/wine/winepulse.drv.so https://github.com/BeanGreen247/Low_Latency_osu_Guide/blob/master/winepulse.drv.so?raw=true
+sudo wget -O /opt/wine-staging/lib64/wine/winepulse.drv.so https://github.com/BeanGreen247/Low_Latency_osu_Guide/blob/master/winepulse-64.drv.so?raw=true
+```
+## The guide part 2/2
 Create osu directory where osu! is going to be installed
 ```
 sudo mkdir /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
@@ -135,13 +175,13 @@ Copy it to your newly created folder
 sudo cp -r ~/Downloads/osu\!install.exe /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
 
-Install dxvk 1.3.2
+Install dxvk 1.3.3
 
-Download https://github.com/doitsujin/dxvk/releases/download/v1.3.2/dxvk-1.3.2.tar.gz
+Download https://github.com/doitsujin/dxvk/releases/download/v1.3.3/dxvk-1.3.3.tar.gz
 
-Extract dxvk-1.3.2.tar.gz to your home folder and copy using the following command
+Extract dxvk-1.3.3.tar.gz to your home folder and copy using the following command
 ```
-sudo cp -r dxvk-1.3.2/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
+sudo cp -r dxvk-1.3.3/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
 ```
 Open winecfg
 ```
@@ -159,7 +199,7 @@ sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
 ```
 Next install DirectX
 
-To do so download the DirectX web installer
+To do so download the DirectX installer
 https://www.microsoft.com/en-us/download/details.aspx?id=8109
 
 Then launch it using the following command
@@ -179,7 +219,7 @@ Create a custom terminal command for launching osu!
 ```
 cat > osu << "EOF"
 #!/bin/sh
-export STAGING_AUDIO_DURATION=1000 #recommend starting at 5000 and work your way down till osu starts crashing
+export STAGING_AUDIO_DURATION=2000 #recommend starting at 5000 and work your way down till osu starts crashing
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
@@ -243,13 +283,7 @@ I would recommend closing osu normally and then kill wine by
 sudo osukill
 ```
 ### THE FINAL STEP
-And the last step is changing the CustomFrameLimit variable. 
-
-To change it open osu!.root.cfg wich can be found in your osu folder. Then find "CustomFrameLimit=240" and change it to 10000.
-```
-CustomFrameLimit=10000 
-```
-I would also recommend to change "HeightFullscreen" and "WidthFullscreen" to a resolution you like playing at.
+I would recommend to change "HeightFullscreen" and "WidthFullscreen" to a resolution you like playing at.
 These work for me:
 ```
 HeightFullscreen = 768
@@ -265,3 +299,9 @@ For the last step open osu to ensure that the changes applied succesfully.
 ## EXTRA
 If you want to push latency lower I would recommend overclocking yourn NVIDIA GPU by using the guide below.
 https://github.com/BeanGreen247/Linux_NVIDIA_GPU_Overclocking_Guide
+
+## Troubleshooting
+If you get any error related to Windows, dlls missing or exes missing, just remove the prefix folder and start again
+```
+sudo rm -rf /mnt/84C2FF4EC2FF42CA/osu-wine-prefix
+```

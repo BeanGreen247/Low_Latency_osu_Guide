@@ -298,7 +298,7 @@ If you want to push latency lower I would recommend overclocking yourn NVIDIA GP
 https://github.com/BeanGreen247/Linux_NVIDIA_GPU_Overclocking_Guide
 
 ## Troubleshooting
-If you get any error related to Windows, just remove the prefix folder and start again
+If you get any error related to Windows, dlls missing or exes missing, just remove the prefix folder and start again
 ```
 sudo rm -rf /mnt/84C2FF4EC2FF42CA/osu-wine-prefix
 ```

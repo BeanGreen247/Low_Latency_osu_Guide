@@ -129,7 +129,7 @@ It is now time for the results. Testing was done with the patch I described alon
 
 My testing method to measure audio latency is the following:
 
-* edit the osu!.<user>.cfg file and set CustomFrameLimit to an unrealistically high number (such as 10000) to achieve the highest possible refresh rate on main menu
+* edit the osu!.root.cfg file and set CustomFrameLimit to an unrealistically high number (such as 10000) to achieve the highest possible refresh rate on main menu
 * start a microphone recording on Audacity
 * set the system, osu! global and music volume to 100% (or whatever is high enough to hear music decently in your mic)
 * set osu! effects volume to 0%
@@ -139,18 +139,18 @@ My testing method to measure audio latency is the following:
 Let’s begin with Windows 10.
 I’m using the default Microsoft drivers for my motherboard’s built-in sound card with all enhancements disabled.
 
-This is about 74ms of latency! This is high. Unfortunately, the Windows audio subsystem is hardly configurable so the only way to optimize latency is probably either in osu! or the audio drivers.
+This is about **74ms** of latency! This is high. Unfortunately, the Windows audio subsystem is hardly configurable so the only way to optimize latency is probably either in osu! or the audio drivers.
 
 We can surely do better…
 
-Let’s see what osu! on Wine Staging 4.14 (without my patch) gives.
+Let’s see what osu! on Wine Staging 4.15 (without my patch) gives.
 
-Unfortunately, despite tweaks to my PulseAudio install, we’re getting 104ms of latency. This is way higher than what we experience on Windows, and unplayable to my standards.
+Unfortunately, despite tweaks to my PulseAudio install, we’re getting **104ms** of latency. This is way higher than what we experience on Windows, and unplayable to my standards.
 The most common and recent workaround for this was to use the Wine ALSA drivers instead (which works on PulseAudio using default configuration), which somehow provide lower latency despite being theoretically less optimal.
 
 Time for my patch to get in the way.
 
-Now we’re talking: 15ms! This is the result I get with my patch and STAGING_AUDIO_DURATION set to 5000 and the PulseAudio settings given below. I’m sure I could actually lower it down to 10ms (with more extreme PulseAudio settings; I can also set STAGING_AUDIO_DURATION as low as 2000). But this is stable and I don’t really need to push it down further; I’m very happy with this right now!
+Now we’re talking: **15ms**! This is the result I get with my patch and STAGING_AUDIO_DURATION set to 5000 and the PulseAudio settings given below. I’m sure I could actually lower it down to 10ms (with more extreme PulseAudio settings; I can also set STAGING_AUDIO_DURATION as low as 2000). But this is stable and I don’t really need to push it down further; I’m very happy with this right now!
 
 In order to get the lowest latency possible, we will need to lower wine's audio latency.
 

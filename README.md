@@ -106,7 +106,7 @@ sudo mv -v winetricks /usr/local/bin
 ```
 Install .NET Framework + japenese fonts and special characters
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet472 cjkfonts gdiplus ie8 winhttp
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet48 cjkfonts gdiplus ie8 winhttp
 ```
 Lower audio latency
 ```
@@ -300,5 +300,5 @@ https://github.com/BeanGreen247/Linux_NVIDIA_GPU_Overclocking_Guide
 ## Troubleshooting
 If you get rundll32 error run
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet472
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet48
 ```

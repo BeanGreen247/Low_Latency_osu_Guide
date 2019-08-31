@@ -298,7 +298,7 @@ If you want to push latency lower I would recommend overclocking yourn NVIDIA GP
 https://github.com/BeanGreen247/Linux_NVIDIA_GPU_Overclocking_Guide
 
 ## Troubleshooting
-If you get rundll32 error run
+If you get any error related to Windows, just remove the prefix folder and start again
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet48
+sudo rm -rf /mnt/84C2FF4EC2FF42CA/osu-wine-prefix
 ```

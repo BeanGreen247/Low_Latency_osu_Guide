@@ -98,6 +98,8 @@ Create wine prefix
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
 ```
+**NOTE: It's going to ask you to install wine-mono and wine-gecko, make sure to select no.**
+
 Install winetricks
 ```
 wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks

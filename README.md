@@ -198,7 +198,7 @@ sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
 ```
 Next install DirectX
 
-To do so download the DirectX web installer
+To do so download the DirectX installer
 https://www.microsoft.com/en-us/download/details.aspx?id=8109
 
 Then launch it using the following command

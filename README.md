@@ -13,6 +13,7 @@ wget -nc https://dl.winehq.org/wine-builds/winehq.key
 wget -nc https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10/Release.key
 sudo apt-key add winehq.key
 sudo apt-key add Release.key
+sudo apt-add-repository contrib
 ```
 Next open your /etc/apt/sources.list file and add to the end of the file
 ```

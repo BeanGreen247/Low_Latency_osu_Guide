@@ -302,8 +302,3 @@ If you get rundll32 error run
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet472
 ```
-If that did not work try
-```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine cmd
-sfc /scannow
-```

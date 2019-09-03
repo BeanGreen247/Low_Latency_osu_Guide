@@ -152,7 +152,7 @@ Time for my patch to get in the way.
 
 Now we’re talking: **15ms**! This is the result I get with my patch and STAGING_AUDIO_DURATION set to 5000 and the PulseAudio settings given below. I’m sure I could actually lower it down to 10ms (with more extreme PulseAudio settings; I can also set STAGING_AUDIO_DURATION as low as 2000). But this is stable and I don’t really need to push it down further; I’m very happy with this right now!
 
-In order to get the lowest latency possible, we will need to lower wine's audio latency.
+In order to get the lowest latency possible, we will need to apply the patch.
 
 To do so we will be required to replace the 32-bit and 64-bit version of the winepulse.drv.so file.
 ```

@@ -156,8 +156,8 @@ In order to get the lowest latency possible, we will need to lower wine's audio 
 
 To do so we will be required to replace the 32-bit and 64-bit version of the winepulse.drv.so file.
 ```
-sudo wget -O /opt/wine-staging/lib/wine/winepulse.drv.so https://github.com/BeanGreen247/Low_Latency_osu_Guide/blob/master/winepulse.drv.so?raw=true
-sudo wget -O /opt/wine-staging/lib64/wine/winepulse.drv.so https://github.com/BeanGreen247/Low_Latency_osu_Guide/blob/master/winepulse-64.drv.so?raw=true
+sudo wget -O /opt/wine-staging/lib/wine/winepulse.drv.so https://github.com/BeanGreen247/WINE-Audio-Latency-Patch/blob/master/winepulse.drv.so?raw=true
+sudo wget -O /opt/wine-staging/lib64/wine/winepulse.drv.so https://github.com/BeanGreen247/WINE-Audio-Latency-Patch/blob/master/winepulse-64.drv.so?raw=true
 ```
 ## The guide part 2/2
 Create osu directory where osu! is going to be installed

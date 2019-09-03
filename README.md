@@ -125,7 +125,7 @@ sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine reged
 ```
 ## Audio Latency
 ### Results of my Progress
-It is now time for the results. Testing was done with the patch I described along with a few common PulseAudio configuration adjustments (that I’ll give later in the article).
+It is now time for the results. Testing was done with the patch.
 
 My testing method to measure audio latency is the following:
 

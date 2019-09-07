@@ -263,12 +263,12 @@ I would recommend to change "HeightFullscreen" and "WidthFullscreen" to a resolu
 These work for me:
 ```
 HeightFullscreen = 768
-WidthFullscreen = 1024
+WidthFullscreen = 1366
 ```
 And change the same for "Height" and "Width"
 ```
 Height = 768
-Width = 1024
+Width = 1366
 ```
 For the last step open osu to ensure that the changes applied succesfully.
 

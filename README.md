@@ -195,8 +195,8 @@ Create a custom terminal command for launching osu!
 ```
 cat > osu << "EOF"
 #!/bin/sh
-export STAGING_AUDIO_DURATION=2000 #recommend starting at 5000 and work your way down till osu starts crashing
 export BROWSER='/opt/firefox/firefox'
+export STAGING_AUDIO_DURATION=1000
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
@@ -210,7 +210,8 @@ cat > osukill << "EOF"
 #!/bin/sh
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
-wineserver -k
+sudo wineserver -k
+sudo killall -9 /opt/wine-staging/bin/*
 EOF
 ```
 Make the commands executable and make them accesable from the terminal

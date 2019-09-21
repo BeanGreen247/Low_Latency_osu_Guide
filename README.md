@@ -196,11 +196,14 @@ Create a custom terminal command for launching osu!
 cat > osu << "EOF"
 #!/bin/sh
 export STAGING_AUDIO_DURATION=2000 #recommend starting at 5000 and work your way down till osu starts crashing
+export BROWSER='/opt/firefox/firefox'
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
 EOF
 ```
+**NOTE: the export BROWSER='/opt/firefox/firefox' sets the default web browser for  wine prefix. To install and enable root mode for firefox go [here]()**
+
 Create a custom terminal command for killing osu!
 ```
 cat > osukill << "EOF"

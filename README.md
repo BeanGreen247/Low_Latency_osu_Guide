@@ -155,9 +155,9 @@ Install dxvk 1.4
 
 Download https://github.com/doitsujin/dxvk/releases/download/v1.4/dxvk-1.4.tar.gz
 
-Extract dxvk-1.3.tar.gz and copy its contents
+Extract dxvk-1.4.tar.gz and copy its contents
 ```
-sudo cp -r dxvk-1.3/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
+sudo cp -r dxvk-1.4/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
 ```
 Open winecfg
 ```

@@ -202,7 +202,7 @@ export WINEARCH=win32
 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
 EOF
 ```
-**NOTE: the export BROWSER='/opt/firefox/firefox' sets the default web browser for  wine prefix. To install and enable root mode for firefox go [here]()**
+**NOTE: the export BROWSER='/opt/firefox/firefox' sets the default web browser for  wine prefix. To install and enable root mode for firefox go [here](https://github.com/BeanGreen247/FireFox_Install_Guide)**
 
 Create a custom terminal command for killing osu!
 ```

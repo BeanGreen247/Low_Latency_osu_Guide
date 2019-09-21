@@ -151,13 +151,13 @@ Copy it to your newly created folder
 sudo cp -r ~/Downloads/osu\!install.exe /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
 
-Install dxvk 1.3.3
+Install dxvk 1.4
 
-Download https://github.com/doitsujin/dxvk/releases/download/v1.3.3/dxvk-1.3.3.tar.gz
+Download https://github.com/doitsujin/dxvk/releases/download/v1.4/dxvk-1.4.tar.gz
 
-Extract dxvk-1.3.3.tar.gz to your home folder and copy using the following command
+Extract dxvk-1.4.tar.gz and copy its contents
 ```
-sudo cp -r dxvk-1.3.3/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
+sudo cp -r dxvk-1.4/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
 ```
 Open winecfg
 ```
@@ -195,19 +195,23 @@ Create a custom terminal command for launching osu!
 ```
 cat > osu << "EOF"
 #!/bin/sh
-export STAGING_AUDIO_DURATION=2000 #recommend starting at 5000 and work your way down till osu starts crashing
+export BROWSER='/opt/firefox/firefox'
+export STAGING_AUDIO_DURATION=1000
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
 EOF
 ```
+**NOTE: the export BROWSER='/opt/firefox/firefox' sets the default web browser for  wine prefix. To install and enable root mode for firefox go [here](https://github.com/BeanGreen247/FireFox_Install_Guide)**
+
 Create a custom terminal command for killing osu!
 ```
 cat > osukill << "EOF"
 #!/bin/sh
 export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
 export WINEARCH=win32
-wineserver -k
+sudo wineserver -k
+sudo killall -9 /opt/wine-staging/bin/*
 EOF
 ```
 Make the commands executable and make them accesable from the terminal

@@ -285,3 +285,17 @@ If you get any error related to Windows, dlls missing or exes missing, just remo
 ```
 sudo rm -rf /mnt/84C2FF4EC2FF42CA/osu-wine-prefix
 ```
+If the game refuses to run make sure to test if X11 allows you to open any app as root. 
+
+To do so run
+```
+sudo gedit
+```
+OR
+```
+sudo mousepad
+```
+To fix run
+```
+xhost +si:localuser:root
+```

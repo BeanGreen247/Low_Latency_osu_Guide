@@ -49,18 +49,6 @@ Windows Registry Editor Version 5.00
 EOF
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine regedit dsound.reg
 ```
-## Audio Latency
-Details about the following patch used can be found here https://github.com/BeanGreen247/WINE-Audio-Latency-Patch 
-
-* edit the osu!.root.cfg file and set CustomFrameLimit to an unrealistically high number (such as 10000) to achieve the highest possible refresh rate on main menu
-
-In order to get the lowest latency possible, we will need to apply the patch.
-
-To do so we will be required to replace the 32-bit and 64-bit version of the winepulse.drv.so file.
-```
-sudo wget -O /opt/wine-staging/lib/wine/winepulse.drv.so https://github.com/BeanGreen247/WINE-Audio-Latency-Patch/blob/master/winepulse.drv.so?raw=true
-sudo wget -O /opt/wine-staging/lib64/wine/winepulse.drv.so https://github.com/BeanGreen247/WINE-Audio-Latency-Patch/blob/master/winepulse-64.drv.so?raw=true
-```
 ## The guide part 2/2
 Create osu directory where osu! is going to be installed
 ```

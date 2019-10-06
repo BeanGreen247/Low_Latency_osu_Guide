@@ -44,31 +44,22 @@ Scroll down and find where it starts saying [testing], [core], [extra], [communi
 # The testing repositories are disabled by default. To enable, uncomment the
 # repo name header and Include lines. You can add preferred servers immediately
 # after the header, and they will be used before the default mirrors.
-
 [testing]
 Include = /etc/pacman.d/mirrorlist
-
 [core]
 Include = /etc/pacman.d/mirrorlist
-
 [extra]
 Include = /etc/pacman.d/mirrorlist
-
 [community-testing]
 Include = /etc/pacman.d/mirrorlist
-
 [community]
 Include = /etc/pacman.d/mirrorlist
-
 # If you want to run 32 bit applications on your x86_64 system,
 # enable the multilib repositories as required here.
-
 [multilib-testing]
 Include = /etc/pacman.d/mirrorlist
-
 [multilib]
 Include = /etc/pacman.d/mirrorlist
-
 # An example of a custom package repository.  See the pacman manpage for
 # tips on creating your own repositories.
 #[custom]
@@ -88,6 +79,9 @@ And lastly install all of these packages
 sudo pacman -Sy giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba alsa alsa-utils alsa-tools gnutls libpng wine-mono lib32-libxml2 lib32-mpg123 lib32-lcms2 lib32-giflib lib32-libpng lib32-gnutls pygtk python2-dbus lib32-libpulse lib32-fontconfig lib32-libxcomposite lib32-libxrender  lib32-libxslt lib32-gnutls lib32-libxi lib32-libxrandr lib32-libxinerama lib32-libcups lib32-freetype2 lib32-libpng lib32-openal python-pyopencl lib32-v4l-utils lib32-libxcursor lib32-mpg123 lib32-sdl xf86-video-intel lib32-mesa-libgl          nss-mdns --needed --noconfirm
 ```
 With that please reboot and proceed with the guide
+
+
+
 
 ## The guide part 1/2
 
@@ -123,18 +117,6 @@ Windows Registry Editor Version 5.00
 EOF
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine regedit dsound.reg
 ```
-## Audio Latency
-Details about the following patch used can be found here https://github.com/BeanGreen247/WINE-Audio-Latency-Patch 
-
-* edit the osu!.root.cfg file and set CustomFrameLimit to an unrealistically high number (such as 10000) to achieve the highest possible refresh rate on main menu
-
-In order to get the lowest latency possible, we will need to apply the patch.
-
-To do so we will be required to replace the 32-bit and 64-bit version of the winepulse.drv.so file.
-```
-sudo wget -O /opt/wine-staging/lib/wine/winepulse.drv.so https://github.com/BeanGreen247/WINE-Audio-Latency-Patch/blob/master/winepulse.drv.so?raw=true
-sudo wget -O /opt/wine-staging/lib64/wine/winepulse.drv.so https://github.com/BeanGreen247/WINE-Audio-Latency-Patch/blob/master/winepulse-64.drv.so?raw=true
-```
 ## The guide part 2/2
 Create osu directory where osu! is going to be installed
 ```
@@ -151,13 +133,13 @@ Copy it to your newly created folder
 sudo cp -r ~/Downloads/osu\!install.exe /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
 
-Install dxvk 1.4
+Install dxvk 1.4.2
 
-Download https://github.com/doitsujin/dxvk/releases/download/v1.4/dxvk-1.4.tar.gz
+Download https://github.com/doitsujin/dxvk/releases/download/v1.4.2/dxvk-1.4.2.tar.gz
 
-Extract dxvk-1.4.tar.gz and copy its contents
+Extract dxvk-1.4.2.tar.gz and copy its contents
 ```
-sudo cp -r dxvk-1.4/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
+sudo cp -r dxvk-1.4.2/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system/
 ```
 Open winecfg
 ```

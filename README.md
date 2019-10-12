@@ -97,7 +97,7 @@ sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks
 ```
 Lower audio latency (set sound to alsa if using alsamixer or pulse if using pulseaudio)
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks sound=pulse
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks sound=alsa
 cat > dsound.reg << "EOF"
 Windows Registry Editor Version 5.00
 

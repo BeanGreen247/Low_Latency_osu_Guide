@@ -95,9 +95,9 @@ Install .NET Framework + japenese fonts and special characters
 ```
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet472 cjkfonts gdiplus ie8 winhttp
 ```
-Lower audio latency
+Lower audio latency (set sound to alsa if using alsamixer or pulse if using pulseaudio)
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks sound=alsa
+sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks sound=pulse
 cat > dsound.reg << "EOF"
 Windows Registry Editor Version 5.00
 

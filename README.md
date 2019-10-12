@@ -102,8 +102,8 @@ cat > dsound.reg << "EOF"
 Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Wine\DirectSound]
-"HelBuflen"="128"
-"SndQueueMax"="1"
+"HelBuflen"="512"
+"SndQueueMax"="3"
 EOF
 sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine regedit dsound.reg
 ```

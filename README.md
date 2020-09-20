@@ -77,11 +77,11 @@ With that please reboot and proceed with the guide
 
 Create the main directory (we will be using this directory for all the configurations and tweaks....may be different in your case)
 ```
-sudo mkdir /mnt/84C2FF4EC2FF42CA/osu-wine-prefix
+sudo mkdir /home/usernamehere/Games/osu-wine-prefix
 ```
 Create wine prefix
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
+sudo WINEPREFIX=/home/usernamehere/Games/osu-wine-prefix/ WINEARCH=win32 winecfg
 ```
 **NOTE: It's going to ask you to install wine-mono and wine-gecko, make sure to select no.**
 
@@ -93,11 +93,11 @@ sudo mv -v winetricks /usr/local/bin
 ```
 Install .NET Framework + japenese fonts and special characters
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet472 cjkfonts gdiplus ie8 winhttp
+sudo WINEPREFIX=/home/usernamehere/Games/osu-wine-prefix/ WINEARCH=win32 winetricks -q --force dotnet472 cjkfonts gdiplus ie8 winhttp
 ```
 Lower audio latency (set sound to alsa if using alsamixer or pulse if using pulseaudio)
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winetricks sound=alsa
+sudo WINEPREFIX=/home/usernamehere/Games/osu-wine-prefix/ WINEARCH=win32 winetricks sound=alsa
 cat > dsound.reg << "EOF"
 Windows Registry Editor Version 5.00
 
@@ -105,14 +105,14 @@ Windows Registry Editor Version 5.00
 "HelBuflen"="512"
 "SndQueueMax"="3"
 EOF
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine regedit dsound.reg
+sudo WINEPREFIX=/home/usernamehere/Games/osu-wine-prefix/ WINEARCH=win32 wine regedit dsound.reg
 ```
 ## The guide part 2/2
 Create osu directory where osu! is going to be installed
 ```
-sudo mkdir /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
+sudo mkdir /home/usernamehere/Games/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
-If you don't want to use the installer download the preinstalled osu! folder (http://www.mediafire.com/file/omcxq8r13uyqa2q/osu.zip/file) and extract it into /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
+If you don't want to use the installer download the preinstalled osu! folder (http://www.mediafire.com/file/omcxq8r13uyqa2q/osu.zip/file) and extract it into /home/usernamehere/Games/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 
 If you want to use the installer follow these steps
 
@@ -120,30 +120,34 @@ Download the Installer https://m1.ppy.sh/r/osu!install.exe
 
 Copy it to your newly created folder
 ```
-sudo cp -r ~/Downloads/osu\!install.exe /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
+sudo cp -r ~/Downloads/osu\!install.exe /home/usernamehere/Games/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!
 ```
 
-Install dxvk 1.5.3
+Install dxvk 1.7.1
 
-Download https://github.com/doitsujin/dxvk/releases/download/v1.5.3/dxvk-1.5.3.tar.gz
+Download https://github.com/doitsujin/dxvk/releases/download/v1.7.1/dxvk-1.7.1.tar.gz
 
-Extract dxvk-1.5.3.tar.gz and copy its contents
+Extract dxvk-1.7.1.tar.gz and copy its contents
 ```
-sudo cp -r dxvk-1.5.3/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system/
+sudo cp -r dxvk-1.7.1/x64/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
+sudo cp -r dxvk-1.7.1/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system/
 ```
 Open winecfg
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 winecfg
+sudo WINEPREFIX=/home/usernamehere/Games/osu-wine-prefix/ WINEARCH=win32 winecfg
 - Set Windows version to Windows 7 if not done already
 - Go to libraries and add
 >>d3d10
 >>d3d10_1
 >>d3d10core
 >>d3d11
+>>d3d12
+>>d3d8
+>>d3d9
 >>dxgi
 - Set them to native and click apply
-- Next go to graphics and tick and "Allow the window manager to control the windows"
-- Next go to Staging and tick Hide Wine version from applications
+- Next go to graphics tick "Allow the window manager to control the windows"
+- Next go to Staging and tick the first four
 ```
 Next install DirectX
 
@@ -152,13 +156,13 @@ https://www.microsoft.com/en-us/download/details.aspx?id=8109
 
 Then launch it using the following command
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine ~/Downloads/directx_Jun2010_redist.exe
+sudo WINEPREFIX=/home/usernamehere/Games/osu-wine-prefix/ WINEARCH=win32 wine ~/Downloads/directx_Jun2010_redist.exe
 ```
 It will aske where to install. Pick C:\
 
 Once done launch the installer
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/DXSETUP.exe
+sudo WINEPREFIX=/home/usernamehere/Games/osu-wine-prefix/ WINEARCH=win32 wine /home/usernamehere/Games/osu-wine-prefix/drive_c/DXSETUP.exe
 ```
 
 Once finished with the install continue.
@@ -167,20 +171,18 @@ Create a custom terminal command for launching osu!
 ```
 cat > osu << "EOF"
 #!/bin/sh
-export BROWSER='/opt/firefox/firefox'
+export BROWSER='/opt/brave.com/brave/brave-browser'
 export STAGING_AUDIO_DURATION=2000
-export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
+export WINEPREFIX=/home/usernamehere/Games/osu-wine-prefix/
 export WINEARCH=win32
-wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
+wine /home/usernamehere/Games/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!.exe
 EOF
 ```
-**NOTE: the export BROWSER='/opt/firefox/firefox' sets the default web browser for  wine prefix. To install and enable root mode for firefox go [here](https://github.com/BeanGreen247/FireFox_Install_Guide)**
-
 Create a custom terminal command for killing osu!
 ```
 cat > osukill << "EOF"
 #!/bin/sh
-export WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/
+export WINEPREFIX=/home/usernamehere/Games/osu-wine-prefix/
 export WINEARCH=win32
 sudo wineserver -k
 sudo killall -9 /opt/wine-staging/bin/*
@@ -213,7 +215,7 @@ Next reboot
 
 Launch the Installer
 ```
-sudo WINEPREFIX=/mnt/84C2FF4EC2FF42CA/osu-wine-prefix/ WINEARCH=win32 wine /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!install.exe
+sudo WINEPREFIX=/home/usernamehere/Games/osu-wine-prefix/ WINEARCH=win32 wine /home/usernamehere/Games/osu-wine-prefix/drive_c/users/root/Application\ Data/osu\!/osu\!install.exe
 ```
 
 After that make sure to run osu with
@@ -255,7 +257,7 @@ https://github.com/BeanGreen247/Linux_NVIDIA_GPU_Overclocking_Guide
 ## Troubleshooting
 If you get any error related to Windows, dlls missing or exes missing, just remove the prefix folder and start again
 ```
-sudo rm -rf /mnt/84C2FF4EC2FF42CA/osu-wine-prefix
+sudo rm -rf /home/usernamehere/Games/osu-wine-prefix
 ```
 If the game refuses to run make sure to test if X11 allows you to open any app as root. 
 
@@ -271,3 +273,12 @@ To fix run
 ```
 xhost +si:localuser:root
 ```
+If you get this error
+```
+X Error of failed request:  BadWindow (invalid Window parameter)
+  Major opcode of failed request:  10 (X_UnmapWindow)
+  Resource id in failed request:  0x1a00001
+  Serial number of failed request:  293
+  Current serial number in output stream:  296
+```
+Make sure to run the game in virtual desktop

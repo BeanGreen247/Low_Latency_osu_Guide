@@ -151,8 +151,8 @@ Download https://github.com/doitsujin/dxvk/releases/download/v1.7.1/dxvk-1.7.1.t
 
 Extract dxvk-1.7.1.tar.gz and copy its contents
 ```
-sudo cp -r dxvk-1.7.1/x64/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system32/
-sudo cp -r dxvk-1.7.1/x32/* /mnt/84C2FF4EC2FF42CA/osu-wine-prefix/drive_c/windows/system/
+sudo cp -r dxvk-1.7.1/x64/* /home/usernamehere/Games/osu-wine-prefix/drive_c/windows/system32/
+sudo cp -r dxvk-1.7.1/x32/* /home/usernamehere/Games/osu-wine-prefix/drive_c/windows/system/
 ```
 Open winecfg
 ```
